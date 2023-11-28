@@ -38,6 +38,15 @@ class Workout extends Equatable {
     return totalTime;
   }
 
+  Workout copyWith({
+    String? title,
+  }) {
+    return Workout(
+      title: title ?? this.title,
+      exercise: exercise,
+    );
+  }
+
   Map<String, dynamic> toJson() => {
         'title': title,
         'exercise': exercise,
