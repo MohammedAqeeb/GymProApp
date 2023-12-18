@@ -3,10 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_app_complete/app/cubit/workout_cubit.dart';
 import 'package:flutter_bloc_app_complete/app/home_screen.dart';
 import 'package:flutter_bloc_app_complete/bloc/workout_cubit.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'app/edit/workout/edit_screen.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+
   runApp(const MyApp());
 }
 
